@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping package="com.ecommerce">
+    	<class name="EProduct" table="eproduct">
+    		<id name="ID">
+    			<generator class="identity"></generator>
+    		</id>
+    		<property name="name" type="string"></property>
+    		<property name="price" type="big_decimal"></property>
+    		<property name="dateAdded" type="timestamp" column="date_added"></property>
+    		<list name="colors" cascade="all" lazy="true">
+    			<key column="product_id"></key>
+    			<list-index column="idx"></list-index>
+    			<one-to-many class="com.ecommerce.Color"/>
+    		</list>
+    		<bag name="screensizes" cascade="all" lazy="true">
+    			<key column="product_id"></key>
+    			<one-to-many class="com.ecommerce.ScreenSizes"/>
+    		</bag>
+    		<set name="os" cascade="all" lazy="true">
+    			<key column="product_id"></key>
+    			<one-to-many class="com.ecommerce.OS" />
+    		</set>
+    		<map name="finance" lazy="true" cascade="all">
+    			<key column="primary_key"></key>
+    			<index column="ftype" type="string"></index>
+    			<one-to-many class="com.ecommerce.Finance"/>
+    		</map>
+    	</class>
+    </hibernate-mapping>
