@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var add=(a,b) => a+b;
+        var sub=(a,b)=> a-b;
+
+        var data= (callback)=>{
+            var num1=10;
+            var num2=20;
+            return callback(10,20);
+        }
+        console.log(data(add));
+        console.log(data(sub));
+
+        //function return function with arrow
+        const multi= (a) => (b)=> a*b;
+        const div = (a)=> (b)=> a/b;
+
+        console.log(multi(10)(20));
+        console.log(div(20)(10));
+    </script>
+</body>
+</html>

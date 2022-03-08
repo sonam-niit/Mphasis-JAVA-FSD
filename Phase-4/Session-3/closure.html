@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let x=10;
+        function test()
+        {
+            let x=20;
+            console.log("In Block "+x);
+            x=35;
+            console.log("After Change: "+x);
+        }
+        test();
+        console.log("Out side of block "+x);
+
+        //Const Demo
+        const y=10;
+        function test1()
+        {
+            const y=20;
+            console.log("In Block "+y);
+           // y=35;
+           // console.log("After Change: "+y);
+        }
+        test1();
+        console.log("Out side of block "+y);
+    </script>
+</body>
+</html>
