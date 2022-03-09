@@ -1,0 +1,22 @@
+<h1>Interpolation</h1> <!-- use {{ variable name }}-->
+<hr>
+<h3>{{title}}</h3>
+<h2>Welcome {{fname}} {{lname}}</h2>
+<h1>Property binding- with attributes</h1>
+<a [href]="url" target="_blank">Click Here</a><br>
+<img  *ngIf="flag" [src]="imgurl" [height]="h" [width]="w">
+<h1>Event Binding (html to ts)</h1>
+<button on-click="showMe()">Show me</button>
+<div *ngIf="flag">{{message}}</div>
+<h1>Array Display</h1>
+<table class="table table-striped table-bordered">
+    <thead><tr><th>Name</th><th>Price</th><th>Availability</th><th>Rating</th></tr></thead>
+    <tbody>
+        <tr *ngFor="let p of products">
+            <td  [style.color]="flag?'red':'blue'" [style.font-weight]="we">{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td [class.inStock]="true">{{p.available}}</td>
+            <td [style.color]="p.rating>4?'green':'red'" [style.font-weight]="we">{{p.rating}}</td>
+        </tr>
+    </tbody>
+</table>
