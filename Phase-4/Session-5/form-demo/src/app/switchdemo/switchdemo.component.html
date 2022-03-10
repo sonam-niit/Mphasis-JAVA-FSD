@@ -1,0 +1,18 @@
+<h1>Switch Demo</h1>
+
+<input type="text" [(ngModel)]="num"/>
+
+<div [ngSwitch]="num">
+    <div *ngSwitchCase="1" class="text-primary">
+        <h2>Today is Monday</h2><!--  -->
+    </div>
+    <div *ngSwitchCase="2" class="text-success">
+        <h2>Today is Monday</h2>
+    </div>
+    <div *ngSwitchCase="3" class="text-warning">
+        <h2>Today is Monday</h2>
+    </div>
+    <div *ngSwitchCase="4" class="text-info">
+        <h2>Today is Monday</h2>
+    </div>
+</div>
