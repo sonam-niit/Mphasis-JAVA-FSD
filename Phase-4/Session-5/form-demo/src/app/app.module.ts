@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 import { SwitchdemoComponent } from './switchdemo/switchdemo.component';
 import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
 import { CustomPipe } from './CustomPipe';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CustomPipe } from './CustomPipe';
     HighlightDirective,
     SwitchdemoComponent,
     PipeDemoComponent,
-    CustomPipe
+    CustomPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
