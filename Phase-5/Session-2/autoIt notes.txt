@@ -1,0 +1,63 @@
+Steps to use AutoIt
+---------------------------------
+install autoIT tool
+
+
+goto C:\\AutoIt\\SciTe\\ Scite.exe
+
+double click on that to write your script
+------------------------------------------------
+ControlFocus("Open","","Edit1")
+ControlSetText("Open","","Edit1","D:\Sonam Data\personal\CV\SonamCV.doc")
+ControlClick("Open","","Button1")
+
+(values like open and edit which is mentioned here that you can get
+it using finder button available in autoIt
+
+--you can drag that to any filed or button to get the values)
+-----------------------------------------------------------------
+once the script create 
+save it using .au3 --> upload.au3
+
+right click on that file and compile script to which is compatible to your OS
+
+It will generate upload.exe file
+which you can run as a script in webdriver
+----------------------------------------------------------------
+
+Create A JAVA class
+-------------------------
+package com.selenium.session2;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class AutoI3 {
+
+	public static void main(String[] args) throws IOException,InterruptedException{
+			
+		System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.get("https://www.shine.com/registration/parser/");
+		WebElement email= driver.findElement(By.id("id_name"));
+		email.sendKeys("sonam@gmail.com");
+		
+		WebElement upload= driver.findElement(By.id("id_file"));
+		JavascriptExecutor executor=(JavascriptExecutor)driver;
+	
+		executor.executeScript("arguments[0].click()", upload);
+		
+		Thread.sleep(5000);
+		
+		Runtime.getRuntime().exec("D:\\Selenium\\fileupload.exe");
+	}
+}
+
+------------------------------------------------------------------
+run as Java App and check the output 
