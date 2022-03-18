@@ -1,0 +1,9 @@
+eclispe project
+
+build testng.xml --> run as test suite
+
+right click on your project --> run as maven test
+
+(check it is able to build or not)
+
+then configure jenkins part

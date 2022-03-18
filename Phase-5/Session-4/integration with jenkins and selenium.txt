@@ -1,0 +1,58 @@
+download jdk 8 or 11 as jenkins work on this 2 versions.
+---------------------------------------------------------------
+(if you have latest versio then no need to delete you can keep 2 versions of jdk in your system aT SAME TIME)
+
+
+download jenkins.war file from jenkins download
+----------------------------------------------------------
+
+copy jenkins jar file and paste it in java/jdk/bin folder
+
+move to that bin folder and execute below mentioned command
+------------------------------------------------------------------
+java -jar jenkins.war
+
+----------------------------------------------------------
+you will be able to see initial admin password
+
+then open localhost:8080 and enter that password
+
+---------------------------------------------------------
+install all suggested plugins and give username, password, confirm password and fullname. (remember user and password)
+
+save and continue.
+
+you will be redirected on Jenkins page
+----------------------------------------------------------------------
+
+where you need to create Job --> maven project --> OK
+
+-------------------------------------------------------------------
+click on configure --> it will ask you for tool configuration
+
+-----------------------------------------------------------------------
+add JDK --> deselect the add automatic check box --> add name of jdk and give jdk path in JAVA_HOME value
+
+--------------------------------------------------------------------
+click on Add Maven
+----------------------------------
+(How to check maven version --> eclipse -->window -->preferences --> maven --> installation (check embedded version))
+
+give name of maven (any)
+
+select the version as per your eclipse version 
+
+add automatically (click on check box)
+
+---------------------------------------------------------
+Save
+--------
+
+in Build -->
+
+Root Pom --> location of your projects pom.xml
+
+goals and Options --> clean Test
+
+------------------------------------------------------------------------
+Click on Build now
