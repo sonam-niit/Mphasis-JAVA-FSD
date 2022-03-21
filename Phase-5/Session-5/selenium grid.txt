@@ -1,0 +1,148 @@
+Selenium grid Set up
+--------------------------------
+to execute multiple test scripts in diffrent VM
+
+to set up 
+
+download selenium standalone jar file
+
+Setting up a HUb
+-----------------
+go to that location where you have stored selenium standalone jar
+
+java -jar selenium-server-standalone-3.5.0.jar -role hub
+
+
+once it is started check console: http://localhost:4444
+---------------------------------------------------------------
+
+Set Up Node:
+----------------------
+open another cmd > chnage directory of selenium standalone jar > execute below command
+
+java -jar selenium-server-standalone-3.5.0.jar -role node -hub http://192.168.84.88:4444/grid/register/
+
+again check console for node registered or not: http://localhost:4444
+--------------------------------------------------------------------------------
+
+****************SeleniumGrid with JSON configuration*****************
+----------------------------------------------------------------------
+
+create myhub.json file at the same location where you have stand alone Jar file
+----------------------------------------------------------------
+{
+ "port": 4444,
+ "newSessionWaitTimeout": -1,
+ "servlets" : [],
+ "withoutServlets": [],
+ "custom": {},
+ "capabilityMatcher": "org.openqa.grid.internal.utils.
+DefaultCapabilityMatcher",
+ "registry": "org.openqa.grid.internal.DefaultGridRegistry",
+ "throwOnCapabilityNotPresent": true,
+ "cleanUpCycle": 5000,
+ "role": "hub",
+ "debug": false,
+ "browserTimeout": 0,
+ "timeout": 1800
+}
+
+========================================================
+start hub
+
+cd D:/selenium
+java -jar selenium-server-standalone-3.5.0.jar -role hub -hubConfig myhub.json
+
+create Node config (mynode.json)
+---------------------------
+
+{
+  "capabilities":
+  [
+    {
+      "browserName": "firefox",
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver"
+    },
+    {
+      "browserName": "chrome",
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver"
+    },
+    {
+      "browserName": "internet explorer",
+      "maxInstances": 1,
+      "seleniumProtocol": "WebDriver"
+    }
+  ],
+  "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+  "maxSession": 5,
+  "port": 5555,
+  "register": true,
+  "registerCycle": 5000,
+  "hub": "http://localhost:4444",
+  "nodeStatusCheckTimeout": 5000,
+  "nodePolling": 5000,
+  "role": "node",
+  "unregisterIfStillDownAfter": 60000,
+  "downPollingLimit": 2,
+  "debug": false,
+  "servlets" : [],
+  "withoutServlets": [],
+  "custom": {}
+}
+=========================================================================================
+start the node with configuration
+
+java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalone-3.5.0.jar -role node -nodeConfig mynode.json
+
+
+check localhost:4444/console
+
+------------------------------------------------------------------------------
+
+******************Run test with selenium grid ***********************
+-------------------------------------------------------------------
+start hub
+java -jar selenium-server-standalone-3.5.0.jar -role hub
+
+start node (chrome driver)
+java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalone-3.5.0.jar -role node -hub http://192.168.84.88:4444/grid/register/
+
+
+create JAVA Project (add selenium jar files in buildpath )
+-------------------------------------------------------------
+give package name: com.testing.selegrid 
+
+create JAVA class GridTest and add below mentioned code
+----------------------------------------------------------------
+
+package com.testing.selgrid;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class GridTest {
+
+	public static void main(String[] args) throws MalformedURLException {
+		DesiredCapabilities cap= new DesiredCapabilities();
+		cap.setBrowserName("chrome");
+		cap.setPlatform(Platform.WINDOWS);
+		
+		URL url= new URL("http://192.168.84.88:4444/wd/hub");
+		WebDriver driver = new RemoteWebDriver(url,cap);
+		
+		driver.get("https://google.com");
+		System.out.println("Title: "+driver.getTitle());
+		
+		driver.close();
+	}
+}
+
+Run as JAVA Application: you can check hub and node console for test execution
+check eclipse console to check output.
