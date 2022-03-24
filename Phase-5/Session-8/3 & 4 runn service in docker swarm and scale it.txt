@@ -1,0 +1,38 @@
+****** run image on docker swarm *******
+
+swarm means managing multiple conatiners running
+on multiple hosts
+
+------------------------------------
+2 node : 1 node is manager and another node is worker
+
+>docker swarm init
+(it wil make my node as manager node and give one command, if you execute that command on another instaance --> that instance will connect to your manager node as worker.)
+
+once swarm initialized check the running node
+
+>docker node ls
+
+Let's run the service on docker swarm
+
+>docker service create -p 80:80 --name webserver myimage
+
+>docker service ls (check running service)
+
+>curl localhost:80
+
+****** Scale the container with Docker swarm ***********
+
+>docker service scale webserver=3
+
+(this will scale your service with 3 services running)
+
+to check service running
+
+>docker service ls
+
+to check howmany same services running
+
+>docker service ps webserver
+
+(you will be able to see 3 running services)

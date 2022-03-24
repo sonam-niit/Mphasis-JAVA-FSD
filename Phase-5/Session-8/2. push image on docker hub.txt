@@ -1,0 +1,26 @@
+**********Practice 2 *************
+
+create account on https://hub.docker.com/
+
+once the account create go to your mobaxterm
+
+execute >docker login 
+
+enter username and password (password not visible just enter, it will take it)
+
+if getting error of permission denied then execute below command
+
+> sudo chmod 666 /var/run/docker.sock
+
+next create tag for push image on hub
+
+(docker tag imageWhichYouPush <username>/anyNamewhichyouWanttoGiveForRepoImage)
+
+>docker tag myimage sonamsoni/firstimage
+
+execute below command to push image
+
+>docker push sonamsoni/firstimage
+
+
+

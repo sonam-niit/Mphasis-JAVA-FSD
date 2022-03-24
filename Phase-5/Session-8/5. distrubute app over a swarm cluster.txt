@@ -1,0 +1,50 @@
+********* Distribute Applicatione Accross the swarm cluster ********
+
+step 1: create 2 instance one as dockermaster and anotherone as dockerworker in aws EC2
+
+step 2: connet with both instances using mobaXterm
+
+	install docker on both the instaces
+
+	check version 
+	create one image on both the instances
+
+step 3: edit one hosts file to provide the IP address of master and worker
+
+	go to dockermaster instance in mobaXterm
+
+	sudo vi /etc/hosts file
+
+	ipaddressOfMaster dockermaster
+	ipaddressOfWorker dockerworker1 (copy private IPV4 address from your instances) 
+
+	press esc
+	type :wq! 
+	enter
+
+step 4: check wether the hosts file working or not 
+	ping dockermaster
+	to stop : ctrl + C
+	ping dockerworker1
+	to stop : ctrl + C
+
+step 5: sudo docker swarm init --advertise-addr 172.31.81.162
+	(IP address of master node)
+	
+	you will get one command to run on worker machine
+	docker swarm join --token SWMTKN-1-58kdapnjy6tq4vd8vlpy7u528vo09azrk7396fmpskhvhpxlnx-bszc2q3t3hsrib3mbpgsx5lrf 172.31.81.162:2377
+ 	(from master machine copy the command and run on worker machine)
+	if you get access denied error than type sudo before the command
+
+step 6: go to master node and execute
+	docker node ls
+
+	you can see 2 nodes connected one is leader and another one is worker
+
+step 7: execute one service with 2 replicas on master node
+
+	docker service create --name clusterdemo --publish 8081:8081 --replicas 2 myimage
+
+step 8: docker service ps clusterdemo
+ 	(this will show you one service is running on master node and another one is runnnig on server node
+

@@ -13,8 +13,7 @@ select instance type: t2.micro
 configureInstace details: keep as default
 just check the default values
 
-Storage: by default the size is 8GB, increase
-if required
+Storage: by default the size is 8GB, increase if required
 
 Tags: key value pair
 Add Tag --> Name = FirstInstance
@@ -24,9 +23,9 @@ like: firstInstance
 firstInstance created 2022-03-22T10:32:27.283+05:30
 
 also click on Add Rule
-add Http
 in ssh --> click on dropdown and change it to myIP
-add Rule --> All TCP -> 0.0.0.0/0, ::/0 in custom
+add http --> keep as it is
+add Rule --> All TCP --> port 0- 65534 -> 0.0.0.0/0, ::/0 in custom
 
 review and launch
 
@@ -47,7 +46,7 @@ move to the html folder /var/www/html
 
 create new file using vi editor: sudo vi index.html
 
-now you are in vi editor: press i to edit the file and write your code
+now you are in vi editor: press i to edit the file and write your code (HTML code)
 
 to save and close vi editor: press esc then :wq! enter
 

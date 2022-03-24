@@ -17,9 +17,10 @@ public class User extends Thread{
 	{
 		System.out.println(name +" wants to send a message "+msg);
 		
-		synchronized(sender)
+		sender.send(msg); //without synchronization
+		/*synchronized(sender)
 		{
 			sender.send(msg);
-		}
+		} */
 	}
 }

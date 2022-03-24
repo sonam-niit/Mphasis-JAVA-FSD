@@ -1,0 +1,56 @@
+***********Practice 1 Docker ************
+
+create instance on AWS with ubuntu 20.01 OS
+
+once the instance started connect it with the help of MobaXterm
+-------------------------------------
+
+***************Docker installation on Ubuntu OS *********************
+
+> sudo apt-get update
+> sudo apt-get install ca-certificates curl gnupg lsb-release
+
+>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+> echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list /dev/null
+
+***** Install Docker Engine ***************
+ > sudo apt-get update
+ > sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+********* let's check docker installed or not ****************
+
+> sudo docker -v or sudo docker --version
+> sudo docker info
+
+there is a docker hub which is a repository for docker image
+from there we can pull the images and use the same
+
+ex. let pull my sql image
+> sudo docker pull mysql
+> sudo docker images
+
+*** structure of docker conatiner *******
+> sudo ls (to check no of files available in folder)
+
+******** let's create our code image *************
+clone repository
+
+>git clone https://github.com/sonam-niit/docker_master.git 
+
+>cd docker_master
+
+>sudo ls (check list of files)
+
+>sudo docker build -t myimage .  (to build the image based on docker file available in the root)
+
+>sudo docker images (check the available images)
+
+>sudo docker run -d --name myconatainer -p 80:80 myimage (run image on conatainer named myconatainer) 
+
+>sudo docker ps -a (check the running containers)
+
+>curl localhost:80 (check html code which is running on port 80)
+
+also you can see the running php file
+ your instance ip : 80 (http://3.83.213.128:80)
