@@ -47,7 +47,7 @@ public class LinkedList {
 			currNode = currNode.next;
 		}
 		System.out.println();
-	}
+3	}
 
 	// Method to delete a node in the LinkedList by KEY
 	public static LinkedList deleteByKey(LinkedList list, int key) {

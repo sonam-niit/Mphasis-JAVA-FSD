@@ -1,4 +1,4 @@
-package com.simplilearn.matrix;
+wqpackage com.simplilearn.matrix;
 
 public class MultiplyMatrices {
 	
