@@ -1,0 +1,8 @@
+<p>register works!</p>
+<form>
+    <input type="text" [(ngModel)]="pro.name" name="name" placeholder="Enter Product name">
+    <br><br>
+    <input type="text" [(ngModel)]="pro.description" name="description" placeholder="Enter Product description">
+    <br><br>
+    <button type="submit" (click)="addProduct()">Register Product</button>
+</form>
